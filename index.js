@@ -24,6 +24,12 @@ app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
 
+app.use('/api/whoami',function(req,res){
+  console.log('whami reach');
+  console.log(req.headers);
+  res.json({ipaddress: req.header('X-Real-IP') ,language: "it",software: "c"});
+})
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
